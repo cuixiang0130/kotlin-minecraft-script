@@ -1,0 +1,10 @@
+/.idea/
+/.gradle/
+/build/
+
+/buildSrc/.gradle/
+/buildSrc/build/
+
+/server/build/
+
+/bom/build
