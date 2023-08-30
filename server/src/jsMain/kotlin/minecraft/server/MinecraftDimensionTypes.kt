@@ -7,7 +7,7 @@ package minecraft.server
  * @since 1.0.0
  */
 @Deprecated("Use vanilla-data instead")
-public open external class MinecraftDimensionTypes {
+public open external class MinecraftDimensionTypes protected constructor() {
     public companion object {
         /**
          * The Nether is a collection of biomes separate from the
