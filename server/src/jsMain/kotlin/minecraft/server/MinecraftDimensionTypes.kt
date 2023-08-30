@@ -6,6 +6,7 @@ package minecraft.server
  * A collection of default Minecraft dimension types.
  * @since 1.0.0
  */
+@Deprecated("Use vanilla-data instead")
 public open external class MinecraftDimensionTypes {
     public companion object {
         /**

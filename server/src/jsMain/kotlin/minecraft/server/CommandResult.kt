@@ -13,5 +13,5 @@ public open external class CommandResult {
      * applications of this command.
      * @since 1.0.0
      */
-    public open val successCount: Number
+    public open val successCount: Int
 }
