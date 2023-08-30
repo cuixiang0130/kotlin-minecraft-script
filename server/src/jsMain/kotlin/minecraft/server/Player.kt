@@ -2,22 +2,11 @@
 
 package minecraft.server
 
-import kotlin.js.Promise
-
 /**
  * Represents a player within the world.
  * @since 1.0.0
  */
 public open external class Player protected constructor() : Entity {
-    /**
-     * Unique identifier of the player. This identifier is intended
-     * to be consistent across loads of a world instance. No
-     * meaning should be inferred from the value and structure of
-     * this unique identifier - do not parse or interpret it.
-     * @throws Error This property can throw when used.
-     * @since 1.0.0
-     */
-    override val id: String
 
     /**
      * Name of the player.
@@ -27,25 +16,44 @@ public open external class Player protected constructor() : Entity {
     public open val name: String
 
     /**
-     * Unique identifier of the type of the entity - for example,
-     * 'minecraft:player'.
-     * @throws Error This property can throw when used.
-     * @since 1.0.0
+     * Sends a message to the player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param message
+     * The message to be displayed.
+     * @throws Error
+     * This method can throw if the provided [RawMessage] is
+     * in an invalid format. For example, if an empty [RawMessageScore.name] string
+     * is provided to [RawMessage.score].
+     * @since 1.1.0
      */
-    override val typeId: String
+    public open fun sendMessage(message: Array<Any /* RawMessage | String */>)
 
     /**
-     * Runs a particular command asynchronously from the context of
-     * this entity.  Note that there is a maximum queue of 128
-     * asynchronous commands that can be run in a given tick.
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @return
-     * For commands that return data, returns a JSON structure with
-     * command response values.
-     * @throws Error This function can throw errors.
-     * @since 1.0.0
+     * Sends a message to the player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param message
+     * The message to be displayed.
+     * @throws Error
+     * This method can throw if the provided [RawMessage] is
+     * in an invalid format. For example, if an empty [RawMessageScore.name] string
+     * is provided to [RawMessage.score].
+     * @since 1.1.0
      */
-    override fun runCommandAsync(commandString: String): Promise<CommandResult>
+    public open fun sendMessage(message: RawMessage)
+
+    /**
+     * Sends a message to the player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param message
+     * The message to be displayed.
+     * @since 1.1.0
+     */
+    public open fun sendMessage(message: String)
+
 }
