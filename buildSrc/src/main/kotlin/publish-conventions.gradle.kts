@@ -1,20 +1,25 @@
+import java.util.*
+
 plugins {
     `maven-publish`
     signing
+}
+
+val localProperties = Properties().apply {
+    rootProject.file("local.properties").bufferedReader().use { load(it) }
 }
 
 publishing {
     publications {
         if (plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")) {
             withType<MavenPublication> {
-                artifactId = "minecraft-script-" + project.name
-                pom {
-                    name = artifactId
-                }
+                configPublication(project)
             }
         } else {
             create<MavenPublication>("bom") {
-                from(components["javaPlatform"])
+                val component = if (project.name == "bom") "javaPlatform" else "java"
+                from(components[component])
+                configPublication(project)
             }
         }
     }
@@ -22,17 +27,15 @@ publishing {
         maven {
             url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             credentials {
-                username = properties["mavenCentralUsername"]?.toString()
-                password = properties["mavenCentralPassword"]?.toString()
+                username = localProperties["mavenCentralUsername"] as String
+                password = localProperties["mavenCentralPassword"] as String
             }
         }
     }
 
 }
 
-signing{
+signing {
+    useGpgCmd()
     sign(publishing.publications)
 }
-
-
-

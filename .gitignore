@@ -1,10 +1,5 @@
-/.idea/
-/.gradle/
-/build/
+.idea/
+.gradle/
+build/
 
-/buildSrc/.gradle/
-/buildSrc/build/
-
-/server/build/
-
-/bom/build
+local.properties

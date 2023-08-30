@@ -5,19 +5,20 @@ plugins {
 }
 
 kotlin {
+
     explicitApi()
+
     js {
         moduleName = project.name
         browser()
+        nodejs()
         useEsModules()
     }
+
 }
 
 tasks.withType<KotlinJsCompile>().configureEach {
     kotlinOptions {
         useEsClasses = true
-        sourceMap = false
-        sourceMapEmbedSources = null
-        sourceMapPrefix = null
     }
 }
