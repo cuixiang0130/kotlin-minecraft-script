@@ -9,7 +9,7 @@ import kotlin.js.Promise
  * End) within a world.
  * @since 1.0.0
  */
-public open external class Dimension {
+public open external class Dimension protected constructor() {
     /**
      * Identifier of the dimension.
      * @throws Error This property can throw when used.

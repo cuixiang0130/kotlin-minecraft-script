@@ -8,7 +8,7 @@ import kotlin.js.Promise
  * Represents a player within the world.
  * @since 1.0.0
  */
-public open external class Player : Entity {
+public open external class Player protected constructor() : Entity {
     /**
      * Unique identifier of the player. This identifier is intended
      * to be consistent across loads of a world instance. No

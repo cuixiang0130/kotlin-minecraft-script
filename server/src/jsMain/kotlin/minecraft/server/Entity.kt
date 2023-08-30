@@ -9,7 +9,7 @@ import kotlin.js.Promise
  * other moving objects like minecarts) in the world.
  * @since 1.0.0
  */
-public open external class Entity {
+public open external class Entity protected constructor() {
     /**
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No

@@ -7,7 +7,7 @@ package minecraft.server
  * dimensions and the environment of Minecraft.
  * @since 1.0.0
  */
-public open external class World {
+public open external class World protected constructor() {
     /**
      * @since 1.0.0
      */

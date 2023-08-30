@@ -6,7 +6,7 @@ package minecraft.server
  * Contains return data on the result of a command execution.
  * @since 1.0.0
  */
-public open external class CommandResult {
+public open external class CommandResult protected constructor() {
     /**
      * If the command operates against a number of entities,
      * blocks, or items, this returns the number of successful
