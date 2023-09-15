@@ -102,4 +102,33 @@ public open external class Dimension protected constructor() {
      * @since 1.0.0
      */
     public open fun runCommandAsync(commandString: String): Promise<CommandResult>
+
+    /**
+     * Creates a new entity (e.g., a mob) at the specified
+     * location.
+     * This function can't be called in read-only mode.
+     * @param identifier
+     * Identifier of the type of entity to spawn. If no namespace
+     * is specified, 'minecraft:' is assumed.
+     * @param location
+     * The location at which to create the entity.
+     * @return
+     * Newly created entity at the specified location.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun spawnEntity(identifier: String, location: Vector3): Entity
+
+    /**
+     * Creates a new item stack as an entity at the specified
+     * location.
+     * This function can't be called in read-only mode.
+     * @param location
+     * The location at which to create the item stack.
+     * @return
+     * Newly created item stack entity at the specified location.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun spawnItem(itemStack: ItemStack, location: Vector3): Entity
 }

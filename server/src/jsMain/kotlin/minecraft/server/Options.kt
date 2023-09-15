@@ -30,6 +30,12 @@ public inline fun EntityApplyDamageOptions(
     }
 
 /**
+ * Contains additional options for entity effects.
+ * @since 1.3.0
+ */
+public inline fun EntityEffectOptions(action: EntityEffectOptions.() -> Unit): EntityEffectOptions = jso(action)
+
+/**
  * Contains options for selecting entities within an area.
  * @since 1.1.0
  */
@@ -55,6 +61,12 @@ public inline fun MusicOptions(action: MusicOptions.() -> Unit): MusicOptions = 
  * @since 1.2.0
  */
 public inline fun PlayerSoundOptions(action: PlayerSoundOptions.() -> Unit): PlayerSoundOptions = jso(action)
+
+/**
+ * Contains additional options for teleporting an entity.
+ * @since 1.3.0
+ */
+public inline fun TeleportOptions(action: TeleportOptions.() -> Unit): TeleportOptions = jso(action)
 
 /**
  * Contains additional options for a world-level playSound

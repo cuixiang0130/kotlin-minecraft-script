@@ -50,6 +50,50 @@ public open external class Entity protected constructor() {
     public open val typeId: String
 
     /**
+     * Adds or updates an effect, like poison, to the entity.
+     * This function can't be called in read-only mode.
+     * @param effectType
+     * Type of effect to add to the entity.
+     * @param duration
+     * Amount of time, in ticks, for the effect to apply. There are
+     * 20 ticks per second. Use {@link TicksPerSecond} constant to
+     * convert between ticks and seconds. The value must be within
+     * the range [0, 20000000].
+     * @param options
+     * Additional options for the effect.
+     * @return
+     * Returns nothing if the effect was added or updated
+     * successfully. This can throw an error if the duration or
+     * amplifier are outside of the valid ranges, or if the effect
+     * does not exist.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun addEffect(effectType: EffectType, duration: Int, options: EntityEffectOptions? = definedExternally)
+
+    /**
+     * Adds or updates an effect, like poison, to the entity.
+     * This function can't be called in read-only mode.
+     * @param effectType
+     * Type of effect to add to the entity.
+     * @param duration
+     * Amount of time, in ticks, for the effect to apply. There are
+     * 20 ticks per second. Use {@link TicksPerSecond} constant to
+     * convert between ticks and seconds. The value must be within
+     * the range [0, 20000000].
+     * @param options
+     * Additional options for the effect.
+     * @return
+     * Returns nothing if the effect was added or updated
+     * successfully. This can throw an error if the duration or
+     * amplifier are outside of the valid ranges, or if the effect
+     * does not exist.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun addEffect(effectType: String, duration: Int, options: EntityEffectOptions? = definedExternally)
+
+    /**
      * Adds a specified tag to an entity.
      * This function can't be called in read-only mode.
      * @param tag
@@ -183,6 +227,45 @@ public open external class Entity protected constructor() {
     public open fun getComponents(): Array<EntityComponent>
 
     /**
+     * Returns the effect for the specified EffectType on the
+     * entity, undefined if the effect is not present, or throws an
+     * error if the effect does not exist.
+     * @param effectType
+     * The effect identifier.
+     * @return
+     * Effect object for the specified effect, undefined if the
+     * effect is not present, or throws an error if the effect does
+     * not exist.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun getEffect(effectType: EffectType): Effect?
+
+    /**
+     * Returns the effect for the specified EffectType on the
+     * entity, undefined if the effect is not present, or throws an
+     * error if the effect does not exist.
+     * @param effectType
+     * The effect identifier.
+     * @return
+     * Effect object for the specified effect, undefined if the
+     * effect is not present, or throws an error if the effect does
+     * not exist.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun getEffect(effectType: String): Effect?
+
+    /**
+     * Returns a set of effects applied to this entity.
+     * @return
+     * List of effects.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun getEffects(): Array<Effect>
+
+    /**
      * Returns the current location of the head component of this
      * entity.
      * @throws Error This function can throw errors.
@@ -256,6 +339,20 @@ public open external class Entity protected constructor() {
     public open fun kill(): Boolean
 
     /**
+     * Removes the specified EffectType on the entity, or returns
+     * false if the effect is not present.
+     * This function can't be called in read-only mode.
+     * @param effectType
+     * The effect identifier.
+     * @return
+     * Returns true if the effect has been removed. Returns false
+     * if the effect is not found or does not exist.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun removeEffect(effectType: EffectType): Boolean
+
+    /**
      * Removes a specified tag from an entity.
      * This function can't be called in read-only mode.
      * @param tag
@@ -298,4 +395,34 @@ public open external class Entity protected constructor() {
      * @since 1.0.0
      */
     public open fun runCommandAsync(commandString: String): Promise<CommandResult>
+
+    /**
+     * Teleports the selected entity to a new location
+     * This function can't be called in read-only mode.
+     * @param location
+     * New location for the entity.
+     * @param teleportOptions
+     * Options regarding the teleport operation.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun teleport(location: Vector3, teleportOptions: TeleportOptions? = definedExternally)
+
+    /**
+     * Attempts to try a teleport, but may not complete the
+     * teleport operation (for example, if there are blocks at the
+     * destination.)
+     * This function can't be called in read-only mode.
+     * @param location
+     * Location to teleport the entity to.
+     * @param teleportOptions
+     * Options regarding the teleport operation.
+     * @return
+     * Returns whether the teleport succeeded. This can fail if the
+     * destination chunk is unloaded or if the teleport would
+     * result in intersecting with blocks.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun tryTeleport(location: Vector3, teleportOptions: TeleportOptions? = definedExternally): Boolean
 }

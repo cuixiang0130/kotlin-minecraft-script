@@ -51,6 +51,22 @@ public open external class Block protected constructor() {
     public open val z: Int
 
     /**
+     * Gets additional configuration properties (a component) for
+     * specific capabilities of particular blocks - for example, an
+     * inventory component of a chest block.
+     *
+     * @param componentName
+     * Identifier of the component. If a namespace is not
+     * specified, minecraft: is assumed.
+     * @return
+     * Returns the component object if it is present on the
+     * particular block.
+     * @throws Error This function can throw errors.
+     * @since 1.3.0
+     */
+    public open fun getComponent(componentName: String): BlockComponent?
+
+    /**
      * Sets the block in the dimension to the state of the
      * permutation.
      *
