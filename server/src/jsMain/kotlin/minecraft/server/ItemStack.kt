@@ -56,7 +56,7 @@ public open external class ItemStack {
      * Throws if the length exceeds 255 characters.
      * @since 1.2.0
      */
-    public open val nameTag: String
+    public open val nameTag: String?
 
     /**
      * The type of the item.
