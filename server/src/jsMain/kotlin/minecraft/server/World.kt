@@ -47,6 +47,31 @@ public open external class World protected constructor() {
     public open fun getPlayers(options: EntityQueryOptions? = definedExternally): Array<Player>
 
     /**
+     * Plays a particular music track for all players.
+     * This function can't be called in read-only mode.
+     * @throws Error This function can throw errors.
+     * @since 1.2.0
+     */
+    public open fun playMusic(trackID: String, musicOptions: MusicOptions? = definedExternally)
+
+    /**
+     * Plays a sound for all players.
+     * This function can't be called in read-only mode.
+     * @throws Error This function can throw errors.
+     * @since 1.2.0
+     */
+    public open fun playSound(soundID: String, location: Vector3, soundOptions: WorldSoundOptions? = definedExternally)
+
+    /**
+     * Queues an additional music track for players. If a track is
+     * not playing, a music track will play.
+     * This function can't be called in read-only mode.
+     * @throws Error This function can throw errors.
+     * @since 1.2.0
+     */
+    public open fun queueMusic(trackID: String, musicOptions: MusicOptions? = definedExternally)
+
+    /**
      * Sends a message to all players.
      *
      * This function can't be called in read-only mode.
@@ -86,4 +111,11 @@ public open external class World protected constructor() {
      * @since 1.1.0
      */
     public open fun sendMessage(message: String)
+
+    /**
+     * Stops any music tracks from playing.
+     * This function can't be called in read-only mode.
+     * @since 1.2.0
+     */
+    public open fun stopMusic()
 }

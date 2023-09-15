@@ -29,7 +29,7 @@ public open external class Dimension protected constructor() {
      * @throws Error This function can throw errors.
      * @since 1.1.0
      */
-    public open fun getBlock(location: Vector3): Block
+    public open fun getBlock(location: Vector3): Block?
 
     /**
      * Returns a set of entities based on a set of conditions
@@ -75,6 +75,14 @@ public open external class Dimension protected constructor() {
      * @since 1.1.0
      */
     public open fun getPlayers(options: EntityQueryOptions? = definedExternally): Array<Player>
+
+    /**
+     * This function can't be called in read-only mode.
+     *
+     * @throws Error This function can throw errors.
+     * @since 1.2.0
+     */
+    public open fun runCommand(commandString: String): CommandResult
 
     /**
      * Runs a particular command asynchronously from the context of

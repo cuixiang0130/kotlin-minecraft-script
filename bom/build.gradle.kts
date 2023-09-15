@@ -6,5 +6,6 @@ plugins {
 dependencies {
     constraints {
         api(project(":server"))
+        api(project(":server-ui"))
     }
 }

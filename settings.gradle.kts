@@ -17,5 +17,7 @@ dependencyResolutionManagement {
 
 include(":server")
 
+include(":server-ui")
+
 include(":bom")
 

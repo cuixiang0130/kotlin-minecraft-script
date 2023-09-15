@@ -16,6 +16,20 @@ public open external class Player protected constructor() : Entity {
     public open val name: String
 
     /**
+     * Plays a sound that only this particular player can hear.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param soundID
+     * Identifier of the sound to play.
+     * @param soundOptions
+     * Additional optional options for the sound.
+     * @throws Error This function can throw errors.
+     * @since 1.2.0
+     */
+    public open fun playSound(soundID: String, soundOptions: PlayerSoundOptions? = definedExternally)
+
+    /**
      * Sends a message to the player.
      *
      * This function can't be called in read-only mode.
